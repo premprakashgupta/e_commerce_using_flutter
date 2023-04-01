@@ -4,6 +4,7 @@ import 'package:e_commerce_app/model/product_model.dart';
 import 'package:e_commerce_app/screens/catelog/fiter_screen.dart';
 import 'package:e_commerce_app/screens/product_screen.dart';
 import 'package:e_commerce_app/utils/alert.dart';
+import 'package:e_commerce_app/utils/media_query.dart';
 import 'package:e_commerce_app/widget/bottom_modal_sheet.dart';
 import 'package:e_commerce_app/widget/heading_text.dart';
 import 'package:e_commerce_app/widget/para_text.dart';
@@ -43,6 +44,9 @@ class _CatelogScreenState extends State<CatelogScreen> {
       "High to Low Price",
       "Low to High Price"
     ];
+    double size = CustomMediaQuery(context).width;
+    print(size * .02);
+
     return Scaffold(
       backgroundColor: MyColors.background,
       appBar: AppBar(
@@ -67,27 +71,27 @@ class _CatelogScreenState extends State<CatelogScreen> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(size * .02),
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 30,
+                      height: size * .06,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: List.generate(
                               10,
                               (index) => Container(
-                                    width: 110,
+                                    width: size * .2,
                                     margin: const EdgeInsets.only(right: 10),
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
                                         color: Colors.black),
-                                    child: const ParaText(
+                                    child: ParaText(
                                       text: "T-Shirt",
                                       fontweight: FontWeight.normal,
-                                      size: 13,
+                                      size: size * .02,
                                       color: Colors.white,
                                     ),
                                   )),
@@ -95,7 +99,6 @@ class _CatelogScreenState extends State<CatelogScreen> {
                       ),
                     ),
                     const Divider(
-                      // height: 20,
                       thickness: 1,
                       color: Colors.white,
                     ),
@@ -136,19 +139,19 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: List.generate(
-                                            sortList.length,
-                                            (index) => ListTile(
-                                                  shape: const Border(
-                                                      bottom: BorderSide(
-                                                          width: 1,
-                                                          color:
-                                                              Colors.black12)),
-                                                  title: ParaText(
-                                                    text: sortList[index],
-                                                    size: 15,
-                                                    fontweight: FontWeight.w600,
-                                                  ),
-                                                )),
+                                          sortList.length,
+                                          (index) => ListTile(
+                                            shape: const Border(
+                                                bottom: BorderSide(
+                                                    width: 1,
+                                                    color: Colors.black12)),
+                                            title: ParaText(
+                                              text: sortList[index],
+                                              size: size * .022,
+                                              fontweight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     );
                                   },
@@ -164,12 +167,11 @@ class _CatelogScreenState extends State<CatelogScreen> {
                     ),
                     Flexible(
                       child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          childAspectRatio: 120 / 260,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1,
+                          crossAxisSpacing: 3,
+                          mainAxisSpacing: 3,
                         ),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
@@ -194,7 +196,7 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                   Stack(
                                     children: [
                                       Container(
-                                        height: 154,
+                                        height: size * .26,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -217,11 +219,11 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                           ),
-                                          child: const ParaText(
+                                          child: ParaText(
                                             text: '20% OFF',
                                             color: Colors.white,
                                             fontweight: FontWeight.normal,
-                                            size: 10,
+                                            size: size * .02,
                                           ),
                                         ),
                                       ),
@@ -229,8 +231,6 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                         bottom: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 30,
-                                          width: 30,
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -245,7 +245,7 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                             ],
                                           ),
                                           child: IconButton(
-                                            iconSize: 14,
+                                            iconSize: 22,
                                             icon: const Icon(
                                               Icons.favorite_border,
                                               color: Colors.grey,
@@ -256,34 +256,34 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 5),
+                                  SizedBox(height: size * .01),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        children: const [
+                                        children: [
                                           Icon(
                                             Icons.star,
                                             color: Colors.amber,
-                                            size: 16,
+                                            size: size * .03,
                                           ),
-                                          const SizedBox(width: 4),
+                                          SizedBox(width: 4),
                                           ParaText(
                                             text: '4.5',
                                             fontweight: FontWeight.normal,
-                                            size: 10,
+                                            size: size * .02,
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 2),
-                                      const ParaText(
+                                      SizedBox(height: size * .005),
+                                      ParaText(
                                         text: 'Drothy Perkins',
                                         color: Colors.black26,
                                         fontweight: FontWeight.normal,
-                                        size: 11,
+                                        size: size * .021,
                                       ),
-                                      const SizedBox(height: 2),
+                                      SizedBox(height: size * .005),
                                       ParaText(
                                         text: data.title.toString(),
                                         fontweight: FontWeight.bold,
@@ -292,7 +292,7 @@ class _CatelogScreenState extends State<CatelogScreen> {
                                       ParaText(
                                         text: '₹ ${data.price.toString()}',
                                         fontweight: FontWeight.w500,
-                                        size: 15,
+                                        size: size * .03,
                                       ),
                                     ],
                                   ),

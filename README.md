@@ -1,6 +1,6 @@
 # e_commerce_app
 
-A new Flutter project.
+This is an E-Commerce app built using Flutter. It supports both Android and Web platforms.
 
 ## Getting Started
 
@@ -14,3 +14,31 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+Clone this repository to your local machine using `git clone https://github.com/username/e_commerce_app_using_flutter.git`.
+
+Make sure you have Flutter installed on your machine. You can download it from the [official website](https://flutter.dev/docs/get-started/install).
+
+Open the project in your preferred code editor. like `vs code`
+
+Run `flutter pub get` to download and install the dependencies.
+
+To run the app on Android, connect your device or emulator and run `flutter run`
+
+To run the app on the web, run `flutter run -d chrome --web-renderer`
+
+## Demo
+
+![Home screenshot](<assets/Readme_image/ecommerce_(2).png> "Screenshot of the E-Commerce app") ![Profile screenshot](<assets/Readme_image/ecommerce_(3).png> "Screenshot of the E-Commerce app") ![Product screenshot](<assets/Readme_image/ecommerce_(4).png> "Screenshot of the E-Commerce app") ![Catelog screenshot](<assets/Readme_image/ecommerce_(5).png> "Screenshot of the E-Commerce app") ![Category screenshot](<assets/Readme_image/ecommerce_(6).png> "Screenshot of the E-Commerce app")
+
+## License
+
+This app is licensed under the [MIT License](), which allows you to use the code for any purpose, even commercially. However, you may not modify or distribute the code without permission from the original author.
+
+## Contributions
+
+Contributions are welcome! If you find a bug or would like to add a feature, please create a pull request with your changes. Before submitting a pull request, make sure that your code follows the project's coding conventions and that all tests pass.
+
+## Contact
+
+If you have any questions or concerns, feel free to contact me at [email](mailto:prem.com0011@gmail.com).

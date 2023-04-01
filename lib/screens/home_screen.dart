@@ -17,12 +17,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    double size = CustomMediaQuery(context).width;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.7,
-            width: MediaQuery.of(context).size.width,
+            height: CustomMediaQuery(context).height * 0.7,
+            width: size,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage(
@@ -39,45 +41,45 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Positioned(
-                  left: 20,
-                  bottom: 20,
+                  left: size * .05,
+                  bottom: 0.05,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: CustomMediaQuery(context).width * .5,
+                        width: size * .5,
                         child: HeadingText(
                           text: 'Fashion Sale',
-                          size: MediaQuery.of(context).size.width * 0.11,
+                          size: size * 0.11,
                           fontweight: FontWeight.bold,
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      SizedBox(height: size * .05),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(
-            height: 50,
+          SizedBox(
+            height: size * .10,
           ),
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(size * .03),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     ParaText(
                       text: "Sale",
                       fontweight: FontWeight.bold,
-                      size: 48,
+                      size: size * 0.11,
                     ),
                     ParaText(
                       text: "view all",
-                      size: 16,
+                      size: size * .03,
                     )
                   ],
                 ),
@@ -87,8 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: "Super summer sale",
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: size * .07,
                 ),
                 const MyHorizontalList()
               ],

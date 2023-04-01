@@ -68,13 +68,12 @@ class ShippingAddressScreen extends StatelessWidget {
                             children: [
                               SubHeadingText(text: '${data[index]['name']}'),
                               TextButton(
-                                  onPressed: () {
-                                    modal(context);
-                                  },
-                                  child: const SubHeadingText(
-                                    text: 'Edit',
-                                    color: Colors.red,
-                                  ))
+                                onPressed: () {},
+                                child: const SubHeadingText(
+                                  text: 'Remove',
+                                  color: Colors.red,
+                                ),
+                              )
                             ],
                           ),
                           const SizedBox(height: 10),
@@ -97,15 +96,6 @@ class ShippingAddressScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               const ParaText(text: 'use as defaul address'),
-                              const SizedBox(
-                                width: 30,
-                              ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: const SubHeadingText(
-                                    text: 'REMOVE',
-                                    color: Colors.red,
-                                  ))
                             ],
                           ),
                         ],

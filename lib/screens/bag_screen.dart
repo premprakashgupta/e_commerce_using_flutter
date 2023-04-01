@@ -23,9 +23,11 @@ class BagScreen extends StatefulWidget {
 class _BagScreenState extends State<BagScreen> {
   @override
   Widget build(BuildContext context) {
+    double size = CustomMediaQuery(context).width;
     return Scaffold(
       backgroundColor: MyColors.background,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: MyColors.background,
         elevation: 0,
         actions: [
@@ -37,50 +39,51 @@ class _BagScreenState extends State<BagScreen> {
         ],
       ),
       bottomSheet: BottomAppBar(
-          height: 100,
-          child: Consumer<CartProvider>(
-            builder: (context, cartProvider, child) {
-              int totalAmount = 0;
-              for (var item in cartProvider.cartItems) {
-                totalAmount += item.price;
-              }
-              return Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const SubHeadingText(
-                        text: 'Total Amount',
-                      ),
-                      HeadingText(text: '₹ ${totalAmount}'),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 14,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: MyColors.btncolor,
-                      fixedSize: Size(CustomMediaQuery(context).width * .8, 35),
+        height: 100,
+        child: Consumer<CartProvider>(
+          builder: (context, cartProvider, child) {
+            int totalAmount = 0;
+            for (var item in cartProvider.cartItems) {
+              totalAmount += item.price;
+            }
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const SubHeadingText(
+                      text: 'Total Amount',
                     ),
-                    onPressed: cartProvider.cartItems.length < 1
-                        ? null
-                        : () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CheckoutScreen(
-                                    totalAmount: totalAmount,
-                                    cart: cartProvider.cartItems),
-                              ),
-                            );
-                          },
-                    child: Text('CHECKOUT'),
+                    HeadingText(text: '₹ ${totalAmount}'),
+                  ],
+                ),
+                const SizedBox(
+                  height: 14,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColors.btncolor,
+                    fixedSize: Size(CustomMediaQuery(context).width * .8, 35),
                   ),
-                ],
-              );
-            },
-          )),
+                  onPressed: cartProvider.cartItems.length < 1
+                      ? null
+                      : () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CheckoutScreen(
+                                  totalAmount: totalAmount,
+                                  cart: cartProvider.cartItems),
+                            ),
+                          );
+                        },
+                  child: const Text('CHECKOUT'),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -145,12 +148,12 @@ class _BagScreenState extends State<BagScreen> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       SizedBox(
-                                        width: 200,
+                                        width: size * .4,
                                         child: Text(
                                           data[index].title,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
-                                              fontSize: 24,
+                                              fontSize: size < 480 ? 16 : 24,
                                               color: Colors.black),
                                         ),
                                       ),
@@ -165,8 +168,8 @@ class _BagScreenState extends State<BagScreen> {
                                       Row(
                                         children: [
                                           Container(
-                                            width: 30,
-                                            height: 30,
+                                            width: size < 480 ? 20 : 30,
+                                            height: size < 480 ? 20 : 30,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
@@ -180,14 +183,16 @@ class _BagScreenState extends State<BagScreen> {
                                                 ),
                                               ],
                                             ),
-                                            child: Icon(Icons.remove),
+                                            child: Icon(
+                                                size: size < 480 ? 16 : 20,
+                                                Icons.remove),
                                           ),
-                                          const SizedBox(width: 16),
+                                          SizedBox(width: size * .015),
                                           Text('${data[index].item_count}'),
-                                          const SizedBox(width: 16),
+                                          SizedBox(width: size * .015),
                                           Container(
-                                            width: 30,
-                                            height: 30,
+                                            width: size < 480 ? 20 : 30,
+                                            height: size < 480 ? 20 : 30,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
@@ -201,7 +206,9 @@ class _BagScreenState extends State<BagScreen> {
                                                 ),
                                               ],
                                             ),
-                                            child: Icon(Icons.add),
+                                            child: Icon(
+                                                size: size < 480 ? 16 : 20,
+                                                Icons.add),
                                           ),
                                         ],
                                       ),

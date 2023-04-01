@@ -1,21 +1,26 @@
-1. profile edit
-    name edit
-    date of birth inser in database and edit
-    change password field from ui and implement address section
+        1. profile edit
+            name edit
+            date of birth inser in database and edit
+            change password field from ui and implement address section
 
-2. implement if update address or add to cart, delete from cart toast show
-3. favorite section
-4. implement if time; address Model
-5. implement snackbar if user login
-6. ask user for confirmation before logout
-7. remove all print statement from code
-8. implement notification in profile page
-9. implement 'Already have 12 orders' dynamic in profile page
-10.implement toast on address adding
-11.check if variable type dynamic available then change it into whatever type of variable.
-12.implementation of payment method PaymentScreen
-13.implement review screen
-14.implement recommanded feature
-15.implement filter screen
+        2. implement if update address or add to cart, delete from cart toast show
+        3. favorite section
+        4. implement if time; address Model
+        5. implement snackbar if user login
+        6. ask user for confirmation before logout
+        7. remove all print statement from code
+        8. implement notification in profile page
+        9. implement 'Already have 12 orders' dynamic in profile page
+        10.implement toast on address adding
+        11.check if variable type dynamic available then change it into whatever type of variable.
+        12.implementation of payment method PaymentScreen
+        13.implement review screen
+        14.implement recommanded feature
+        15.implement filter screen
+        16.if someone delete, default address,implement method that you cant delete this
+        17.implement push and replace after checout, it is going back every screen
+done    18.remove edit button from address ----------------implemented 02-04-2023
+        19 cart quantity incr. and decr.
+done    20 make this app responsive ----------------- implemented 02-04-2023
 
 

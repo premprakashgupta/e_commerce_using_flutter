@@ -3,6 +3,7 @@ import 'package:e_commerce_app/colors/color.dart';
 import 'package:e_commerce_app/model/product_model.dart';
 import 'package:e_commerce_app/screens/catelog/catelog_screen.dart';
 import 'package:e_commerce_app/utils/alert.dart';
+import 'package:e_commerce_app/utils/media_query.dart';
 import 'package:e_commerce_app/widget/heading_text.dart';
 import 'package:e_commerce_app/widget/para_text.dart';
 import 'package:e_commerce_app/widget/subheading_text.dart';
@@ -32,6 +33,8 @@ class _ShopScreenState extends State<ShopScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double size = CustomMediaQuery(context).width;
+
     return Scaffold(
       backgroundColor: MyColors.background,
       appBar: AppBar(
@@ -51,11 +54,11 @@ class _ShopScreenState extends State<ShopScreen> {
         child: Column(children: [
           Container(
             width: double.maxFinite,
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            height: 100,
+            margin: EdgeInsets.symmetric(vertical: size * .02),
+            height: size * .2,
             decoration: BoxDecoration(
               color: MyColors.btncolor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(size * .02),
             ),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -94,11 +97,13 @@ class _ShopScreenState extends State<ShopScreen> {
                             },
                             child: Container(
                               width: double.maxFinite,
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              height: 100,
+                              margin:
+                                  EdgeInsets.symmetric(vertical: size * .02),
+                              height: size * .2,
                               decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius:
+                                      BorderRadius.circular(size * .02),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.grey.withOpacity(0.5),
@@ -118,11 +123,13 @@ class _ShopScreenState extends State<ShopScreen> {
                                       ),
                                     ),
                                     Container(
-                                      width: 160,
+                                      width: size * .21,
                                       decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
-                                            topRight: Radius.circular(10),
-                                            bottomRight: Radius.circular(10)),
+                                        borderRadius: BorderRadius.only(
+                                            topRight:
+                                                Radius.circular(size * .02),
+                                            bottomRight:
+                                                Radius.circular(size * .02)),
                                         image: DecorationImage(
                                           image: NetworkImage(
                                               data.image.toString()),

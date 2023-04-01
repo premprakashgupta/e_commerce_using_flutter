@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/utils/media_query.dart';
 import 'package:e_commerce_app/widget/para_text.dart';
 import 'package:e_commerce_app/widget/subheading_text.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,16 @@ class MyHorizontalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double size = CustomMediaQuery(context).width;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      height: 310,
+      height: size * .62,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10, // assuming 10 items in the list
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            width: 150,
+            width: size * .3,
             margin: const EdgeInsets.only(right: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,9 +26,9 @@ class MyHorizontalList extends StatelessWidget {
                 Stack(
                   children: [
                     Container(
-                      height: 184,
+                      height: size * .331,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(size * .015),
                         image: const DecorationImage(
                           image: NetworkImage(
                               "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/limited-edition-2022-fashion-poster-design-template-85333b27411fceea83c3a8e9617eedf4_screen.jpg?ts=1646817870"),
@@ -57,9 +59,12 @@ class MyHorizontalList extends StatelessWidget {
                       bottom: 8,
                       right: 8,
                       child: Container(
+                        alignment: Alignment.center,
+                        width: size * .08,
+                        height: size * .08,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(size * .04),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
@@ -69,7 +74,8 @@ class MyHorizontalList extends StatelessWidget {
                           ],
                         ),
                         child: IconButton(
-                          icon: const Icon(
+                          icon: Icon(
+                            size: size * .04,
                             Icons.favorite_border,
                             color: Colors.grey,
                           ),
@@ -86,9 +92,9 @@ class MyHorizontalList extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(
-                          width: 100,
+                          width: size * .2,
                           child: RatingBar.builder(
-                            itemSize: 10,
+                            itemSize: size * .02,
                             ignoreGestures: true,
                             initialRating: 3,
                             minRating: 1,
