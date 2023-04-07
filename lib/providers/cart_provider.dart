@@ -43,4 +43,38 @@ class CartProvider extends ChangeNotifier {
     }
     return null;
   }
+
+  Future<String?> itemCount(
+      {required CartModel cartItem, required String option}) async {
+    if (cartItem.item_count == 1 && option == 'minus')
+      return 'you cant decrease';
+    if (cartItem.item_count == 5 && option == 'plus')
+      return 'you cant increase';
+    String? response = await _productController.itemCount(
+        itemId: cartItem.id, catId: cartItem.category.id, option: option);
+    if (response == 'success') {
+      if (option == 'plus') {
+        for (var element in _cartItems) {
+          if (element.id == cartItem.id &&
+              element.category.id == cartItem.category.id) {
+            element.item_count += 1;
+          }
+        }
+      } else {
+        for (var element in _cartItems) {
+          if (element.id == cartItem.id &&
+              element.category.id == cartItem.category.id) {
+            element.item_count -= 1;
+          }
+        }
+      }
+
+      notifyListeners();
+
+      // return response;
+    } else {
+      // handle error
+    }
+    return null;
+  }
 }

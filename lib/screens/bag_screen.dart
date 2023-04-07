@@ -1,11 +1,9 @@
 import 'package:e_commerce_app/colors/color.dart';
-import 'package:e_commerce_app/firebase/controller/product_controller.dart';
 import 'package:e_commerce_app/model/product_model.dart';
 import 'package:e_commerce_app/providers/cart_provider.dart';
 import 'package:e_commerce_app/screens/checkout_screen.dart';
 import 'package:e_commerce_app/utils/alert.dart';
 import 'package:e_commerce_app/utils/media_query.dart';
-
 import 'package:e_commerce_app/widget/heading_text.dart';
 import 'package:e_commerce_app/widget/subheading_text.dart';
 import 'package:flutter/material.dart';
@@ -168,8 +166,9 @@ class _BagScreenState extends State<BagScreen> {
                                       Row(
                                         children: [
                                           Container(
-                                            width: size < 480 ? 20 : 30,
-                                            height: size < 480 ? 20 : 30,
+                                            alignment: Alignment.center,
+                                            width: size < 480 ? 30 : 40,
+                                            height: size < 480 ? 30 : 40,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
@@ -183,16 +182,24 @@ class _BagScreenState extends State<BagScreen> {
                                                 ),
                                               ],
                                             ),
-                                            child: Icon(
-                                                size: size < 480 ? 16 : 20,
-                                                Icons.remove),
+                                            child: IconButton(
+                                              onPressed: () async {
+                                                await cartProvider.itemCount(
+                                                    cartItem: cartProvider
+                                                        .cartItems[index],
+                                                    option: 'minus');
+                                              },
+                                              icon: Icon(
+                                                  size: size < 480 ? 16 : 20,
+                                                  Icons.remove),
+                                            ),
                                           ),
                                           SizedBox(width: size * .015),
                                           Text('${data[index].item_count}'),
                                           SizedBox(width: size * .015),
                                           Container(
-                                            width: size < 480 ? 20 : 30,
-                                            height: size < 480 ? 20 : 30,
+                                            width: size < 480 ? 30 : 40,
+                                            height: size < 480 ? 30 : 40,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(15),
@@ -206,9 +213,17 @@ class _BagScreenState extends State<BagScreen> {
                                                 ),
                                               ],
                                             ),
-                                            child: Icon(
-                                                size: size < 480 ? 16 : 20,
-                                                Icons.add),
+                                            child: IconButton(
+                                              onPressed: () async {
+                                                await cartProvider.itemCount(
+                                                    cartItem: cartProvider
+                                                        .cartItems[index],
+                                                    option: 'plus');
+                                              },
+                                              icon: Icon(
+                                                  size: size < 480 ? 16 : 20,
+                                                  Icons.add),
+                                            ),
                                           ),
                                         ],
                                       ),

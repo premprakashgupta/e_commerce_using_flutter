@@ -49,4 +49,38 @@ class ProductController {
 
     return 'success';
   }
+
+  Future<String?> itemCount(
+      {required String option, required int itemId, required int catId}) async {
+    await FirebaseInstance.db
+        .collection('users')
+        .doc(_auth.currentUser!.uid)
+        .collection('cart')
+        .where('id', isEqualTo: itemId)
+        .where('category.id', isEqualTo: catId)
+        .get()
+        .then((value) => {
+              for (var element in value.docs)
+                {
+                  if (option == 'plus')
+                    {
+                      element.reference.update(
+                        {
+                          'item_count': FieldValue.increment(1),
+                        },
+                      )
+                    }
+                  else
+                    {
+                      element.reference.update(
+                        {
+                          'item_count': FieldValue.increment(-1),
+                        },
+                      )
+                    }
+                }
+            });
+
+    return 'success';
+  }
 }
