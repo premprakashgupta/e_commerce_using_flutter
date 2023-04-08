@@ -17,10 +17,11 @@
         13.implement review screen
         14.implement recommanded feature
         15.implement filter screen
-        16.if someone delete, default address,implement method that you cant delete this
-        17.implement push and replace after checout, it is going back every screen
+done    16.if someone delete, default address,implement method that you cant delete this
+done    17.implement push and replace after checout, it is going back every screen
 done    18.remove edit button from address ----------------implemented 02-04-2023
-        19 cart quantity incr. and decr.
+done    19 cart quantity incr. and decr.
 done    20 make this app responsive ----------------- implemented 02-04-2023
+        21.onGenerateRoute, it mean separate routing in other file
 
 

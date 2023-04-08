@@ -32,6 +32,12 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> deleteAddressPf({required int uid}) async {
+    _user.address.removeWhere((obj) => obj.id == uid);
+    await _userController.deleteAddress(address: _user.address);
+    notifyListeners();
+  }
+
   Future<void> addAddressPf({required Map<String, dynamic> address}) async {
     await _userController.addAddress(address: address);
     _user.address.add(address);

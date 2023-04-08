@@ -68,7 +68,18 @@ class ShippingAddressScreen extends StatelessWidget {
                             children: [
                               SubHeadingText(text: '${data[index]['name']}'),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  if (data[index]['default'] == true) {
+                                    print('You can not delete default address');
+                                    return;
+                                  }
+                                  if (data.length < 2) {
+                                    print('You can not delete default address');
+                                    return;
+                                  }
+                                  await userProvider.deleteAddressPf(
+                                      uid: data[index]['id']);
+                                },
                                 child: const SubHeadingText(
                                   text: 'Remove',
                                   color: Colors.red,

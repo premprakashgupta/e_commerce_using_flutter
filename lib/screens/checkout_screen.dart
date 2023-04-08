@@ -34,10 +34,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
     await Future.delayed(Duration(seconds: 5)); // Wait for 5 seconds
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SuccessScreen()),
-    );
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => SuccessScreen(),
+        ),
+        ModalRoute.withName('/'));
 
     setState(() {
       isLoading = false;

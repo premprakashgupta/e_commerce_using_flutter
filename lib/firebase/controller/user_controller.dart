@@ -11,6 +11,14 @@ class UserController {
     print(address);
   }
 
+  Future<void> deleteAddress({required List<dynamic> address}) async {
+    await FirebaseInstance.db
+        .collection('users')
+        .doc(FirebaseInstance.auth.currentUser!.uid)
+        .update({'address': address});
+    print(address);
+  }
+
   Future<void> addAddress({required Map<String, dynamic> address}) async {
     await FirebaseInstance.db
         .collection('users')
